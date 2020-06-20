@@ -27,11 +27,12 @@ func New(rf RenderFunc) Renderer {
 	}
 }
 
+// Renderer
 type Renderer interface {
 	Set(key string, v interface{})
 	Parse404() error
 	Parse500() error
-	Parse(code int, name string) error
+	Parse(code int, name string, values ...map[string]interface{}) error
 	AddPostParsing(...func(data types.TSafeMap) error)
 }
 
@@ -50,7 +51,13 @@ func (e *renderer) AddPostParsing(c ...func(data types.TSafeMap) error) {
 	e.pc = append(e.pc, c...)
 }
 
-func (e *renderer) Parse(code int, name string) error {
+func (e *renderer) Parse(code int, name string, values ...map[string]interface{}) error {
+	if len(values) > 0 {
+		for k, v := range values[0] {
+			e.data.Set(k, v)
+		}
+	}
+
 	e.data.Set("context", contextID)
 	e.data.Set("activeTemplate", name)
 

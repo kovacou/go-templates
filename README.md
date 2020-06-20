@@ -1,1 +1,3 @@
 # go-templates
+
+Soon available.
