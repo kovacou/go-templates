@@ -8,13 +8,13 @@ package templates
 import (
 	"net/http"
 
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"github.com/rs/xid"
 
 	"github.com/kovacou/go-types"
 )
 
 // contextID is an unique ID for the current runtime.
-var contextID = primitive.NewObjectID().Hex()
+var contextID = xid.New().String()
 
 // RenderFunc
 type RenderFunc func(code int, name string, data interface{}) error
