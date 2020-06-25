@@ -39,9 +39,5 @@ var (
 		// Casts & Conversions
 		"Int":    convert.Int,
 		"String": convert.String,
-
-		// Slice
-		//"First": "",
-		//"Last":  "",
 	}
 )
