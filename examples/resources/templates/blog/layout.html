@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>{{ block "title" .}} Default title {{ end }}</title>
+    </head>
+    <body>
+        <!-- Includes simulation -->
+        <nav>
+            {{ template "includes/navbar" . }}
+        </nav>
+
+        <!-- Content section -->
+        <div class="container">
+            {{ template "content" . }}
+        </div>
+    </body>
+</html>
