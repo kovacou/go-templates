@@ -140,18 +140,19 @@ func (e *engine) addFromFiles(name string, files []string) {
 func (e *engine) computeInclude(files []string, layout bool) (inc types.Strings) {
 	for _, f := range files {
 		body, _ := ioutil.ReadFile(f)
-		for _, inc := range includeRegexp.FindAllStringSubmatch(string(body), -1) {
+		for _, m := range includeRegexp.FindAllStringSubmatch(string(body), -1) {
 			inc = append(
 				inc,
 				filepath.Clean(
 					fmt.Sprintf("%s/includes/%s.%s",
 						e.config.Directory,
-						inc[3],
+						m[3],
 						e.config.Extension,
 					),
 				))
 		}
 	}
+
 	return
 }
 
