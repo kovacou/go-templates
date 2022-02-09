@@ -40,8 +40,12 @@ func (c Config) getLayout() string {
 
 // Create
 func Create(config Config) Engine {
+	if len(config.Funcs) == 0 {
+		config.Funcs = FuncMap.Copy()
+	}
+
 	e := &engine{
-		funcs:  FuncMap.Copy(),
+		funcs:  config.Funcs,
 		tpl:    map[string]*template.Template{},
 		files:  map[string]types.Strings{},
 		config: config,

@@ -15,6 +15,7 @@ import (
 	"html/template"
 	"strings"
 
+	"github.com/Masterminds/sprig"
 	"github.com/kovacou/go-convert"
 	"github.com/kovacou/go-types"
 )
@@ -32,6 +33,11 @@ var (
 			return template.JS(encoded)
 		},
 
+		// Numeric manipulation
+		"sub": func(y, x int) int {
+			return x - y
+		},
+
 		// Strings
 		"ToLower": strings.ToLower,
 		"ToUpper": strings.ToUpper,
@@ -41,3 +47,7 @@ var (
 		"String": convert.String,
 	}
 )
+
+func init() {
+	FuncMap.Merge(sprig.FuncMap())
+}
