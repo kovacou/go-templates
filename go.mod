@@ -5,8 +5,8 @@ go 1.17
 require (
 	github.com/Masterminds/sprig v2.22.0+incompatible
 	github.com/gin-gonic/gin v1.7.7
-	github.com/kovacou/go-convert v0.0.4
-	github.com/kovacou/go-types v0.0.3
+	github.com/kovacou/go-convert v0.0.6
+	github.com/kovacou/go-types v0.0.4
 	github.com/labstack/echo/v4 v4.6.3
 	github.com/rs/xid v1.3.0
 )
